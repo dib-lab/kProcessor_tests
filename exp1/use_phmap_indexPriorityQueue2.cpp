@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 
     kmerDecoder *KMERS = kProcessor::initialize_kmerDecoder(fasta_file, chunkSize, "kmers", {{"k_size", kmerSize}});
     kDataFrame *KF = new kDataFramePHMAP(kmerSize, 1);
-    colored_kDataFrame* ckf= kProcessor::indexPriorityQueue(KMERS, names_file, KF);
+    colored_kDataFrame* ckf= kProcessor::indexPriorityQueue2(KMERS, names_file, KF);
 
     // Dumping
     // ckf->save("idx_phmap");
