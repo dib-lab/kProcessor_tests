@@ -4,7 +4,7 @@
 
 - Branch: **PriorityQueueIndexing**
 
-> You may need to build this twice cause the ntcard can't be imported in the CMake add_library().
+> You may need to build this twice cause the ntcard can't be imported in the CMake add_subdirectory().
 
 ```bash
 git clone git@github.com:dib-lab/kProcessor.git
