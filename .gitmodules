@@ -1,0 +1,4 @@
+[submodule "kp_PriorityQueueIndexing"]
+	path = kp_PriorityQueueIndexing
+	url = https://github.com/dib-lab/kProcessor.git
+	branch = PriorityQueueIndexing
