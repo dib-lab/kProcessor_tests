@@ -17,6 +17,8 @@ git submodule update --init --recursive -j 4
 
 ## Data Preparation
 
+### 1. Human Protein Coding Transcripts
+
 ```bash
 echo "Downloading ..."
 
@@ -39,6 +41,27 @@ Number of unique canoncial kmer (Jellyfish): 82,285,599
 
 STATS
 
+```
+
+### 2. Unitigs
+
+```bash
+
+wget -c https://sra-download.ncbi.nlm.nih.gov/traces/sra51/SRR/010757/SRR11015356 -O SRR11015356.sra
+fastq-dump --fasta 0 --split-files SRR11015356.sra
+
+ls -1 *fasta > list_reads
+bcalm -kmer-size 75 -max-memory 12000 -out SRR11015356_k75 -in list_reads
+
+# Generating Names File
+grep ">" SRR11015356_k75.unitigs.fa | cut -c2- |  awk -F' ' '{print $0"\t"$1}' > SRR11015356_k75.unitigs.fa.names
+
+
+<<STATS
+file                        format  type    num_seqs        sum_len  min_len  avg_len  max_len
+SRR11015356_k75.unitigs.fa  FASTA   DNA   11,824,622  1,133,741,131       75     95.9    1,683
+
+STATS
 
 ```
 
